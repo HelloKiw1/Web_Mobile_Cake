@@ -3,14 +3,21 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Início</ion-title>
-    <ion-buttons slot="end" class="ion-margin-end">
+
+    <ion-title>
+      <a class="navbar-brand" href="#">
+        <img src="assets/img/logo1.svg" alt="Logo" class="logo-small">
+      </a>
+    </ion-title>
+
+    <ion-buttons slot="end">
       <ion-label>
         <h3>{{ usuario.nome }}</h3>
       </ion-label>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content [fullscreen]="true">
   <ion-card>
