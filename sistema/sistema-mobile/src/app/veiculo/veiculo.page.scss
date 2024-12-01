@@ -1,0 +1,81 @@
+// Definindo a paleta de cores
+$primary-green: #28a745;
+$secondary-orange: #ff9800;
+$white: #ffffff;
+
+// Cabeçalho com fundo verde e logo ajustada
+ion-header {
+  --background: $primary-green;
+  --color: $white;
+
+  ion-toolbar {
+    a.navbar-brand img.logo-small {
+      max-height: 25px; // Reduzindo a altura da logo
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}
+
+// Cartão com fundo laranja e texto branco
+ion-card {
+  --background: $secondary-orange;
+  --color: $white;
+
+  ion-card-header {
+    ion-card-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: $white;
+    }
+
+    ion-card-subtitle {
+      font-size: 14px;
+      color: rgba($white, 0.8); // Texto com transparência
+    }
+  }
+}
+
+// Lista de itens com ajustes no espaçamento
+ion-list {
+  ion-item {
+    --background: $white;
+    --color: $primary-green;
+
+    ion-thumbnail img {
+      border-radius: 8px;
+    }
+
+    ion-label {
+      font-size: 16px;
+    }
+
+    ion-label[color="primary"] {
+      color: $secondary-orange;
+      font-weight: bold;
+    }
+  }
+
+  ion-item-options ion-item-option {
+    --background: #ff4d4f; // Vermelho para o botão de exclusão
+    --color: $white;
+  }
+}
+
+// Botões de navegação
+ion-buttons {
+  ion-menu-button {
+    --color: $white;
+  }
+}
+
+// Toast e mensagens com cores personalizadas
+.toast-success {
+  --background: $primary-green;
+  --color: $white;
+}
+
+.toast-error {
+  --background: #e63946; // Vermelho escuro para erros
+  --color: $white;
+}
