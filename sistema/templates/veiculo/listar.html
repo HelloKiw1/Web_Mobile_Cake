@@ -1,0 +1,128 @@
+{% extends "../base.html" %}
+
+{% load static %}
+
+{% block css_local %}
+    <style>
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-edit, .btn-delete {
+            width: auto; /* Ajusta a largura para o conteúdo */
+            display: inline-block; /* Garante que fiquem lado a lado */
+            font-weight: bold;
+        }
+
+        .btn-edit {
+            background-color: #ffc107; /* Cor de fundo laranja para o botão Editar */
+            border-color: #ffc107;
+        }
+
+        .btn-edit:hover {
+            background-color: #e68900; /* Cor de fundo mais escura ao passar o mouse */
+            border-color: #e68900;
+        }
+
+        .btn-delete {
+            background-color: #dc3545; /* Cor de fundo vermelho para o botão Deletar */
+            border-color: #dc3545;
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333; /* Cor de fundo mais escura ao passar o mouse */
+            border-color: #c82333;
+        }
+
+        .d-flex {
+            display: flex; /* Usar flexbox para alinhar os botões lado a lado */
+            gap: 0.5rem; /* Espaçamento entre os botões */
+        }
+
+        .card-body {
+            padding: 1.25rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        .container {
+            padding-top: 30px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        /* Fixando 3 cards por linha */
+        .col-md-4 {
+            flex: 1 0 31%; /* Sempre 3 cards por linha em telas médias ou maiores */
+            max-width: 31%;
+        }
+
+        /* Em telas pequenas, exibindo 2 cards por linha */
+        @media (max-width: 768px) {
+            .col-md-4 {
+                flex: 1 0 48%; /* 2 cards por linha em telas médias */
+                max-width: 48%;
+            }
+        }
+
+        /* Em dispositivos muito pequenos (celulares), 1 card por linha */
+        @media (max-width: 480px) {
+            .col-md-4 {
+                flex: 1 0 100%; /* 1 card por linha em telas menores */
+                max-width: 100%;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            {% for veiculo in veiculos %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    {% if veiculo.foto %}
+                    <img src="{{ veiculo.foto.url }}" class="card-img-top" alt="{{ veiculo.modelo }} Image">
+                    {% else %}
+                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Placeholder Image">
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ veiculo.get_nome_marca }} {{ veiculo.modelo }}</h5>
+                        <p class="card-text">Ano: {{ veiculo.ano }}</p>
+                        <div class="d-flex gap-2">
+                            <a class="btn btn-edit" href='/veiculo/{{ veiculo.id }}' type="button">Editar</a>
+                            <a class="btn btn-delete" href='/veiculo/deletar/{{ veiculo.id }}' type="button">Deletar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
