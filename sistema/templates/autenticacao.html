@@ -3,14 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Carja - Aluguel de veículos</title>
+        <title>Oficina do Bolo</title>
         {% load static %}
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <!-- Adicionando o favicon -->
+        <link rel="icon" href="{% static 'img/ck_logo.png' %}" type="image/png">
     </head>
     <body>
         <div class="login-container">
             <div class="login-logo">
-                <img src="{% static 'img/veiculo_logo.png' %}" alt="Logo" class="logo">
+                <img src="{% static 'img/ck_logo.png' %}" alt="Logo" class="logo">
             </div>
             <form class="login-form" action="/" method="POST">
             {% csrf_token %}

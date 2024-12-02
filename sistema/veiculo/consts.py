@@ -28,3 +28,11 @@ OPCOES_COMBUSTIVEIS = (
     (3, 'FLEX'),
     (4, 'GASOLINA')
 )
+
+# Constantes para o tipo de evento
+OPCOES_TIPOS_EVENTOS = [
+    (1, 'Lançamento'),
+    (2, 'Feira'),
+    (3, 'Reunião'),
+    (4, 'Outros'),
+]
