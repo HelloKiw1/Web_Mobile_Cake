@@ -21,11 +21,18 @@
             font-size: 24px;
             font-weight: bold;
             color: #fff; /* Texto branco para a marca */
+            display: flex;
+            align-items: center;
         }
 
         .navbar-brand img {
             height: 80px;
             width: auto;
+            margin-right: 10px; /* Espaçamento entre a logo e o nome */
+        }
+
+        .navbar-brand span {
+            text-decoration: underline; /* Sublinhado na palavra "Oficina" */
         }
 
         .navbar-nav .nav-link {
@@ -106,6 +113,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
                     <img src="{% static 'img/ck_logo.png' %}" alt="Logo">
+                    <span>Oficina do Bolo                
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
