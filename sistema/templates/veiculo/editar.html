@@ -1,14 +1,24 @@
 {% extends "../base.html" %}
 
-    {% block titulo %} Editar Veiculo{% endblock %}
-    
-    {% block content %}
-        
-        
-        <div class="container mt-5">
-            <h1 class="mb-4">Editar Veículo</h1>
-            <form action = '/veiculo/{{ object.pk }}/' method="POST" enctype="multipart/form-data">
+{% block titulo %} Editar Veículo {% endblock %}
+
+{% block content %}
+    <div class="container mt-5 d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card shadow-lg p-4" style="max-width: 600px; width: 100%;">
+            <h1 class="text-center mb-4">Editar Veículo</h1>
+
+            <!-- Exibindo a imagem atual do veículo -->
+            {% if object.imagem %}
+                <div class="mb-4 text-center">
+                    <h5>Imagem Atual:</h5>
+                    <img src="{{ object.imagem.url }}" alt="Imagem do veículo" class="img-fluid" style="max-width: 100%; height: auto;">
+                </div>
+            {% endif %}
+
+            <!-- Formulário de edição do veículo -->
+            <form action='/veiculo/{{ object.pk }}/' method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
+                
                 {% for field in form %}
                     <div class="mb-3">
                         <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
@@ -22,9 +32,11 @@
                         {% endif %}
                     </div>
                 {% endfor %}
-                <button type="submit" class="btn btn-primary">Salvar</button>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
             </form>
         </div>
-        
-
-    {% endblock %}
+    </div>
+{% endblock %}

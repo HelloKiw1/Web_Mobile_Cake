@@ -1,18 +1,15 @@
 {% extends "../base.html" %}
 
-    {% block titulo %} Deletar Veiculo{% endblock %}
-    
-    {% block content %}
-    <form action = '/veiculo/deletar/{{ object.pk}}' method="post">
-        {% csrf_token %}
+{% block titulo %} Deletar Veículo {% endblock %}
 
-        <center>
-            <div class = "alert alert-danger" role = 'alert'>
-                <p>Tem certeza que deseja excluir o veiculo "{{ object }} ?"</p>
-            </div>
-            <input type="submit" value="Confirmar" class="btn btn-danger" />
-        </center>
-
-    </form>
-
-    {% endblock %}
+{% block content %}
+<form action="{% url 'deletar-veiculos' object.pk %}" method="post">
+    {% csrf_token %}
+    <center>
+        <div class="alert alert-danger" role="alert">
+            <p>Tem certeza que deseja excluir o veículo "{{ object }}"?</p>
+        </div>
+        <input type="submit" value="Confirmar" class="btn btn-danger" />
+    </center>
+</form>
+{% endblock %}

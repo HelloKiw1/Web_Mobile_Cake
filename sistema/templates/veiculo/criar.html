@@ -1,14 +1,16 @@
 {% extends "../base.html" %}
 
-    {% block titulo %} Cadastrar Veiculo{% endblock %}
-    
-    {% block content %}
-        
-        
-        <div class="container mt-5">
-            <h1 class="mb-4">Cadastrar Veículo</h1>
-            <form action = '/veiculo/novo/' method="POST" enctype="multipart/form-data">
+{% block titulo %} Cadastrar Veículo {% endblock %}
+
+{% block content %}
+    <div class="container mt-5 d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card shadow-lg p-4" style="max-width: 600px; width: 100%;">
+            <h1 class="text-center mb-4">Cadastrar Veículo</h1>
+
+            <!-- Formulário de cadastro de veículo -->
+            <form action='/veiculo/novo/' method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
+                
                 {% for field in form %}
                     <div class="mb-3">
                         <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
@@ -22,9 +24,11 @@
                         {% endif %}
                     </div>
                 {% endfor %}
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </div>
             </form>
         </div>
-        
-
-    {% endblock %}
+    </div>
+{% endblock %}

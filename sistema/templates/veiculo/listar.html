@@ -1,12 +1,36 @@
-{% extends "../base.html" %} 
+{% extends "../base.html" %}
 
-{% load static %} 
+{% load static %}
 
 {% block css_local %}
     <style>
         .card-img-top {
             height: 200px;
             object-fit: cover;
+        }
+
+        /* Centralizar título e aplicar negrito */
+        .card-title {
+            display: flex;
+            justify-content: center; /* Centraliza o título */
+            font-weight: bold; /* Deixa o texto em negrito */
+        }
+
+        .card-title span {
+            margin-right: 5px; /* Espaço entre marca e modelo */
+        }
+
+        /* Centralizar os botões */
+        .card-body .d-grid {
+            display: flex;
+            justify-content: center; /* Centraliza os botões */
+            gap: 10px; /* Espaço entre os botões */
+        }
+
+        /* Botões em negrito */
+        .card-body .btn {
+            width: auto; /* Ajusta a largura para o conteúdo */
+            font-weight: bold; /* Deixa o texto dos botões em negrito */
         }
     </style>
 {% endblock %}
@@ -15,27 +39,30 @@
     <div class="container mt-5">
         <div class="row">
             {% for veiculo in veiculos %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        {% if veiculo.foto %}
+                            <a href="/veiculo/{{ veiculo.id }}">
+                                <img src="{{ veiculo.foto.url }}" class="card-img-top" alt="{{ veiculo.modelo }} Image">
+                            </a>
+                        {% else %}
+                            <a href="/veiculo/{{ veiculo.id }}">
+                                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Placeholder Image">
+                            </a>
+                        {% endif %}
 
-
-            <div class="col-md-4">
-                <div class="card mb-4">
-
-                    {% if veiculo.foto %}
-                    <img src="{{ veiculo.foto.url }}" class="card-img-top" alt="{{ veiculo.modelo }} Image">
-                    {% else %}
-                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Placeholder Image">
-                    {% endif %}
-
-                    <div class="card-body">
-                        <h5 class="card-title">{{ veiculo.get_nome_marca }}  {{ veiculo.modelo }}</h5>
-                        <p class="card-text">Ano: {{ veiculo.ano }}</p>
-                        <div class="d-grid gap-2 d-md-block">
-                            <a class="btn btn-warning" href='/veiculo/{{ veiculo.id }}' type="button">Editar</a>
-                            <a class="btn btn-danger" href='/veiculo/deletar/{{ veiculo.id }}' type="button">Deletar</a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <span>{{ veiculo.get_nome_marca }}</span> {{ veiculo.modelo }}
+                            </h5>
+                            <p class="card-text">Ano: {{ veiculo.ano }}</p>
+                            <div class="d-grid gap-2 d-md-block">
+                                <a class="btn btn-warning" href='/veiculo/{{ veiculo.id }}' type="button">Editar</a>
+                                <a class="btn btn-danger" href='/veiculo/deletar/{{ veiculo.id }}' type="button">Deletar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>

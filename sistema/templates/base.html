@@ -3,20 +3,98 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <title>Desenvolvimento WebMobile</title>
+    <title>Oficina do Bolo</title>
+
+    <!-- Definir o Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'img/ck_logo.png' %}" />
 
     <link type="text/css" rel="stylesheet" href="{% static 'bootstrap-5.3.3/css/bootstrap.css' %}">
     <script type="text/javascript" src="{% static 'bootstrap-5.3.3/js/bootstrap.js' %}"></script>
 
     <style>
+        /* Estilo para a barra de navegação */
+        .navbar {
+            background-color: #1e40af; /* Azul forte para a navbar */
+        }
+
         .navbar-brand {
             font-size: 24px;
             font-weight: bold;
+            color: #fff; /* Texto branco para a marca */
         }
+
         .navbar-brand img {
             height: 80px;
             width: auto;
         }
+
+        .navbar-nav .nav-link {
+            color: #ffffff; /* Texto branco para os links */
+            font-weight: bold; /* Texto em negrito */
+            padding: 10px 20px; /* Adicionando padding para tornar os links mais espaçados */
+            border-radius: 25px; /* Caixa ovalada */
+            margin: 5px 0; /* Espaçamento entre os links */
+            transition: background-color 0.3s; /* Transição suave para o hover */
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: #f0f8ff; /* Azul claro para o hover */
+            color: #1e40af; /* Cor do texto no hover */
+        }
+
+        .navbar-nav .nav-link.logout { 
+            background-color: #dc3545; /* Fundo vermelho para o link "Sair" */
+            color: white; /* Texto branco */
+        }
+
+        .navbar-nav .nav-link.logout:hover {
+            background-color: #c82333; /* Tom mais escuro de vermelho no hover */
+            color: white;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #fff; /* Ícone de toggler branco */
+        }
+
+        /* Estilo para os botões do menu */
+        .nav-item {
+            margin-left: 10px;
+        }
+
+        /* Estilo da área de conteúdo */
+        #conteudo {
+            padding: 20px;
+            background-color: #f0f8ff; /* Azul claro para o fundo do conteúdo */
+        }
+
+        /* Caixa ovalada para os links */
+        .nav-link {
+            font-size: 18px;
+            font-weight: bold; /* Texto em negrito */
+            padding: 10px 20px; /* Espaçamento adequado dentro da caixa */
+            border-radius: 25px; /* Caixa com bordas arredondadas */
+            background-color: #1e40af; /* Fundo azul forte */
+            color: white; /* Texto branco */
+            margin: 5px 0;
+        }
+
+        /* Estilo para os links no conteúdo */
+        .nav-link:hover {
+            background-color: #f0f8ff; /* Azul claro no hover */
+            color: #1e40af; /* Texto azul no hover */
+        }
+
+        /* Responsividade para o navbar */
+        @media (max-width: 992px) {
+            .navbar {
+                background-color: #1e40af; /* Azul forte no mobile */
+            }
+
+            .navbar-nav {
+                text-align: center;
+            }
+        }
+
     </style>
     {% block css_local %}{% endblock %}
 </head>
@@ -24,16 +102,16 @@
 <body>
     <div id="menu-superior">
         {% block menu_superior %}
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="{% static 'img/logo1.svg' %}" alt="Logo">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'img/ck_logo.png' %}" alt="Logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav ms-auto"> <!-- Adicionado ms-auto para alinhar à direita -->
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/veiculo/">Página Inicial</a>
                         </li>
@@ -41,7 +119,7 @@
                             <a class="nav-link" href="/veiculo/novo/">Adicionar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout/">Sair</a>
+                            <a class="nav-link logout" href="/logout/">Sair</a> <!-- Link "Sair" com classe logout -->
                         </li>
                     </ul>
                 </div>
